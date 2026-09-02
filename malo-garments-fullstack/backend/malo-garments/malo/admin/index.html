@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login — Malo Garments</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <div class="admin-login-wrapper">
+    <div class="admin-login-card">
+      <div class="admin-login-logo">
+        <div class="logo-icon">✦</div>
+        <h1>Malo Garments</h1>
+        <p>Admin Panel</p>
+      </div>
+
+      <div class="admin-login-error" id="loginError">Invalid username or password.</div>
+
+      <form id="adminLoginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" class="form-input" id="adminUsername" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" id="adminPassword" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Log In</button>
+      </form>
+
+      <div class="admin-demo-hint">
+        Demo credentials — Username: <strong>admin</strong> · Password: <strong>admin123</strong>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (MaloStore.isAdminLoggedIn()) {
+        window.location.href = './dashboard.html';
+        return;
+      }
+
+      document.getElementById('adminLoginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('adminUsername').value.trim();
+        const password = document.getElementById('adminPassword').value;
+        const errorBox = document.getElementById('loginError');
+
+        if (await MaloStore.adminLogin(username, password)) {
+          window.location.href = './dashboard.html';
+        } else {
+          errorBox.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

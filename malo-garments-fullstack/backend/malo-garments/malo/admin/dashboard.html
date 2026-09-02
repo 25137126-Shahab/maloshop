@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Malo Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar" id="adminTopbar"></div>
+
+      <div class="admin-content">
+        <div class="admin-stats-grid" id="statsGrid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="admin-charts-grid">
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>Revenue — Last 6 Months</h3></div>
+            <canvas id="revenueChart" height="110"></canvas>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card-header"><h3>Products by Category</h3></div>
+            <canvas id="categoryChart" height="110"></canvas>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Recent Orders</h3>
+            <a href="./orders.html" class="btn btn-outline btn-sm">View All</a>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr>
+              </thead>
+              <tbody id="recentOrdersBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <script src="../js/store.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>

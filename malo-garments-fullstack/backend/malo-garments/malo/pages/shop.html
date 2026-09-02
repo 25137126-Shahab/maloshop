@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop All — Malo Garments</title>
+  <meta name="description" content="Browse our full collection of ladies garments, undergarments, lingerie, sleepwear and more at Malo Garments." />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/shop.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <header id="main-navbar"></header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Shop All</h1>
+      <div class="breadcrumb" style="justify-content: center;">
+        <a href="../index.html">Home</a>
+        <span class="separator">/</span>
+        <span class="current">Shop</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="main-content" style="padding-top: 0;">
+    <div class="container">
+      <div class="shop-layout">
+        <!-- Sidebar -->
+        <aside class="shop-sidebar" id="shopSidebar">
+          <!-- Rendered by JS -->
+        </aside>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Main Content -->
+        <div class="shop-main">
+          <div class="shop-toolbar">
+            <button class="mobile-filter-btn" id="mobileFilterBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+              Filters
+            </button>
+            <span class="shop-result-count" id="resultCount">Loading...</span>
+            <div class="shop-sort">
+              <label for="shopSort">Sort by:</label>
+              <select id="shopSort" class="form-select" style="width: auto;">
+                <option value="default">Featured</option>
+                <option value="newest">Newest</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="product-grid" id="productGrid">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="load-more-section" id="loadMoreSection"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/shop.js"></script>
+</body>
+</html>

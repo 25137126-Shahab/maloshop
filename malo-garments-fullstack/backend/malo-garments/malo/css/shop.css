@@ -1,0 +1,450 @@
+/*
+ * Malo Garments — Shop Page Styles
+ */
+
+.shop-layout {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: var(--sp-2xl);
+  padding: var(--sp-2xl) 0 var(--sp-4xl);
+  width: 100%;
+}
+
+/* ─── Sidebar Filters ─── */
+.shop-sidebar {
+  position: sticky;
+  top: calc(var(--navbar-height) + 20px);
+  align-self: flex-start;
+  max-height: calc(100vh - var(--navbar-height) - 40px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: var(--sp-md);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Prevent the product grid column from being forced wider than its
+   track by long unbreakable content (a common CSS Grid overflow bug) */
+.shop-main {
+  min-width: 0;
+}
+
+/* The mobile overlay backdrop must be taken out of the grid's normal
+   flow at EVERY breakpoint, not just inside the mobile media query.
+   Without this, `.shop-layout` (display:grid) auto-places all three
+   of its children — sidebar, overlay, and main — into grid cells, so
+   the invisible overlay div silently ate a grid column/row and pushed
+   the actual product grid out of place, which is what was causing the
+   sidebar filters and product cards to visually collide. Fixed
+   positioning removes it from grid flow entirely, and it's hidden by
+   default everywhere except while a mobile filter panel is open. */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+.shop-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.shop-sidebar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.filter-section {
+  margin-bottom: var(--sp-2xl);
+  padding-bottom: var(--sp-2xl);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dark);
+  margin-bottom: var(--sp-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.filter-title .toggle-icon {
+  transition: transform var(--transition);
+  font-size: var(--fs-xs);
+}
+
+.filter-title.collapsed .toggle-icon {
+  transform: rotate(-90deg);
+}
+
+/* Category list */
+.filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.filter-list label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: var(--fs-sm);
+  color: var(--text);
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color var(--transition);
+}
+
+.filter-list label:hover {
+  color: var(--rose);
+}
+
+.filter-list input[type="checkbox"],
+.filter-list input[type="radio"] {
+  accent-color: var(--rose);
+  width: 16px;
+  height: 16px;
+}
+
+.filter-count {
+  margin-left: auto;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* Price range */
+.price-range-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  margin-bottom: var(--sp-md);
+}
+
+.price-range-slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 4px;
+  background: var(--border);
+  border-radius: 4px;
+  outline: none;
+}
+
+.price-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--rose);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Size buttons */
+.size-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.size-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all var(--transition);
+  background: transparent;
+}
+
+.size-btn:hover,
+.size-btn.active {
+  border-color: var(--rose);
+  color: var(--rose);
+  background: rgba(201, 123, 123, 0.05);
+}
+
+/* Color swatches */
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.color-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  position: relative;
+}
+
+.color-swatch:hover,
+.color-swatch.active {
+  border-color: var(--dark);
+  transform: scale(1.1);
+}
+
+.color-swatch.active::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--white);
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
+/* Clear filters */
+.clear-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  font-size: var(--fs-sm);
+  color: var(--rose);
+  font-weight: 500;
+  cursor: pointer;
+  padding: var(--sp-sm) 0;
+  transition: color var(--transition);
+  background: none;
+  border: none;
+}
+
+.clear-filters-btn:hover {
+  color: var(--rose-dark);
+}
+
+/* ─── Shop Main Content ─── */
+.shop-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-xl);
+  gap: var(--sp-lg);
+  flex-wrap: wrap;
+}
+
+.shop-result-count {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+}
+
+.shop-result-count strong {
+  color: var(--dark);
+}
+
+.shop-sort {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.shop-sort label {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.shop-sort select {
+  padding: 8px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-sm);
+  color: var(--text);
+  background: var(--white);
+  cursor: pointer;
+  outline: none;
+}
+
+.shop-sort select:focus {
+  border-color: var(--rose);
+}
+
+/* Mobile filter toggle */
+.mobile-filter-btn {
+  display: none;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 10px 20px;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: var(--border-radius);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--dark);
+}
+
+/* Active filters tags */
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-lg);
+}
+
+.active-filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: 4px 12px;
+  background: var(--blush-light);
+  color: var(--rose-dark);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  border-radius: var(--border-radius-pill);
+}
+
+.active-filter-tag button {
+  font-size: var(--fs-xs);
+  color: var(--rose-dark);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0 2px;
+}
+
+/* Load More */
+.load-more-section {
+  text-align: center;
+  padding: var(--sp-2xl) 0;
+}
+
+/* ─── Responsive ─── */
+
+/* Narrow desktop / large tablet: shrink the sidebar column, but keep
+   it a real grid item (still above the off-canvas breakpoint). */
+@media (max-width: 1024px) {
+  .shop-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--sp-xl);
+  }
+}
+
+/* Tablet & mobile: switch to a single column and turn the sidebar into
+   an off-canvas panel. Breakpoint raised to 900px (rather than 768px)
+   so it kicks in before the 220px sidebar column gets cramped, which
+   is what was causing the sidebar and product grid to visually
+   collide/overlap on narrower screens. */
+@media (max-width: 900px) {
+  .shop-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .shop-main {
+    width: 100%;
+  }
+
+  /* Fully off-screen AND non-interactive by default — belt-and-
+     suspenders on top of the transform, so the panel can never
+     visually overlap or intercept clicks over the product grid even
+     if the transform/transition somehow fails to apply. visibility
+     (rather than display:none) is used here so the slide-in
+     transition still animates smoothly when opened. */
+  .shop-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    background: var(--white);
+    z-index: 999;
+    padding: var(--sp-xl);
+    transform: translateX(-100%);
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform var(--transition), visibility 0s linear var(--transition);
+    max-height: 100vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .shop-sidebar.active {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+    transition: transform var(--transition), visibility 0s linear;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .mobile-filter-btn {
+    display: flex;
+  }
+
+  .sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--sp-xl);
+    padding-bottom: var(--sp-lg);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .sidebar-close h3 {
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: 600;
+  }
+
+  .sidebar-close button {
+    font-size: var(--fs-xl);
+    color: var(--text-light);
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .shop-sort {
+    justify-content: space-between;
+  }
+
+  .shop-sort select {
+    flex: 1;
+  }
+
+  .size-buttons,
+  .color-swatches {
+    gap: 6px;
+  }
+}

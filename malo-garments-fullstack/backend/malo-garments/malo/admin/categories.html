@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories — Malo Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar" id="adminTopbar"></div>
+
+      <div class="admin-content">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>All Categories</h3>
+            <button class="btn btn-primary" id="addCategoryBtn">+ Add Category</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th></th><th>Name</th><th>Slug</th><th>Subcategories</th><th>Products</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="categoriesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Category Modal -->
+  <div class="admin-modal-overlay" id="categoryModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 id="categoryModalTitle">Add Category</h3>
+        <button class="admin-modal-close" id="closeCategoryModal">✕</button>
+      </div>
+      <form id="categoryForm">
+        <input type="hidden" id="categoryId" />
+        <div class="form-group">
+          <label class="form-label">Category Name *</label>
+          <input type="text" class="form-input" id="catName" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Slug *</label>
+          <input type="text" class="form-input" id="catSlug" placeholder="e.g. ladies-garments" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URL *</label>
+          <input type="text" class="form-input" id="catImage" placeholder="https://..." required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subcategories (comma-separated)</label>
+          <input type="text" class="form-input" id="catSubcategories" placeholder="Dresses, Tops, Skirts" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Save Category</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/categories.js"></script>
+</body>
+</html>

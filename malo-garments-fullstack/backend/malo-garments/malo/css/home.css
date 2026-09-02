@@ -1,0 +1,457 @@
+/*
+ * Malo Garments — Home Page Styles
+ */
+
+/* ─── Hero Section ─── */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 500px;
+  max-height: 800px;
+  margin-top: var(--navbar-height);
+  overflow: hidden;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(45,45,45,0.6) 0%, rgba(45,45,45,0.2) 100%);
+}
+
+.hero-slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+  color: var(--white);
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: var(--border-radius-pill);
+  margin-bottom: var(--sp-lg);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: var(--sp-lg);
+  color: var(--white);
+  max-width: 600px;
+}
+
+.hero-desc {
+  font-size: var(--fs-md);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: var(--sp-2xl);
+  max-width: 500px;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--sp-lg);
+  flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+  padding: 16px 36px;
+  background: var(--white);
+  color: var(--dark);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.hero-btn-primary:hover {
+  background: var(--rose);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 123, 123, 0.4);
+}
+
+.hero-btn-secondary {
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--white);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.hero-btn-secondary:hover {
+  background: var(--white);
+  color: var(--dark);
+  border-color: var(--white);
+}
+
+/* Hero dots */
+.hero-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+}
+
+.hero-dot.active {
+  background: var(--white);
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* ─── Category Highlights ─── */
+.categories-section {
+  padding: var(--sp-4xl) 0;
+  background: var(--white);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-xl);
+}
+
+.category-card {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  cursor: pointer;
+  group: true;
+}
+
+.category-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.category-card:hover .category-card-image {
+  transform: scale(1.08);
+}
+
+.category-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--sp-2xl);
+  transition: background var(--transition);
+}
+
+.category-card:hover .category-card-overlay {
+  background: linear-gradient(180deg, transparent 20%, rgba(201, 123, 123, 0.75) 100%);
+}
+
+.category-card-name {
+  font-family: var(--font-heading);
+  font-size: var(--fs-xl);
+  color: var(--white);
+  margin-bottom: var(--sp-sm);
+}
+
+.category-card-cta {
+  font-size: var(--fs-sm);
+  color: rgba(255,255,255,0.9);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  transition: gap var(--transition);
+}
+
+.category-card:hover .category-card-cta {
+  gap: var(--sp-md);
+}
+
+/* ─── New Arrivals / Featured Products ─── */
+.products-section {
+  padding: var(--sp-4xl) 0;
+  background: var(--cream);
+}
+
+.products-section .product-grid {
+  margin-bottom: var(--sp-2xl);
+}
+
+.section-cta {
+  text-align: center;
+}
+
+/* ─── Sale Banner ─── */
+.sale-banner {
+  padding: var(--sp-4xl) 0;
+  background: linear-gradient(135deg, var(--blush-light) 0%, var(--cream) 50%, var(--blush-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.sale-banner-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3xl);
+  align-items: center;
+}
+
+.sale-banner-text {
+  padding: var(--sp-xl);
+}
+
+.sale-tag {
+  display: inline-block;
+  background: var(--rose);
+  color: var(--white);
+  padding: 6px 20px;
+  border-radius: var(--border-radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--sp-lg);
+}
+
+.sale-title {
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  margin-bottom: var(--sp-lg);
+  line-height: 1.2;
+}
+
+.sale-desc {
+  color: var(--text-light);
+  font-size: var(--fs-md);
+  margin-bottom: var(--sp-2xl);
+  line-height: 1.8;
+}
+
+.sale-banner-image {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.sale-banner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Testimonials ─── */
+.testimonials-section {
+  padding: var(--sp-4xl) 0;
+  background: var(--white);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-xl);
+}
+
+.testimonial-card {
+  background: var(--cream);
+  border-radius: var(--border-radius-lg);
+  padding: var(--sp-2xl);
+  text-align: center;
+  transition: all var(--transition);
+  border: 1px solid transparent;
+}
+
+.testimonial-card:hover {
+  border-color: var(--blush);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-quote {
+  font-size: 2.5rem;
+  color: var(--blush);
+  line-height: 1;
+  margin-bottom: var(--sp-md);
+}
+
+.testimonial-text {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: var(--sp-lg);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: var(--fs-sm);
+}
+
+.testimonial-role {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+/* ─── Features Bar ─── */
+.features-bar {
+  padding: var(--sp-3xl) 0;
+  background: var(--dark);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-xl);
+}
+
+.feature-item {
+  text-align: center;
+  color: var(--white);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: var(--sp-md);
+  color: var(--blush);
+}
+
+.feature-title {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--sp-sm);
+  color: var(--white);
+}
+
+.feature-desc {
+  font-size: var(--fs-xs);
+  color: rgba(255,255,255,0.6);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+    min-height: 450px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-md);
+  }
+
+  .category-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .sale-banner-content {
+    grid-template-columns: 1fr;
+  }
+
+  .sale-banner-image {
+    display: none;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

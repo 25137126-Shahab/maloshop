@@ -1,0 +1,185 @@
+/*
+ * Malo Garments — About, Contact & Misc Static Page Styles
+ */
+
+/* ─── About Page ─── */
+.about-hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(45,45,45,0.55) 0%, rgba(45,45,45,0.25) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-hero-overlay h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+}
+
+.about-story {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--sp-4xl) 0;
+  text-align: center;
+}
+
+.about-story p {
+  font-size: var(--fs-md);
+  line-height: 1.9;
+  color: var(--text-light);
+  margin-bottom: var(--sp-lg);
+}
+
+.about-values {
+  background: var(--cream);
+  padding: var(--sp-4xl) 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-xl);
+}
+
+.value-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--sp-2xl);
+  text-align: center;
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--sp-lg);
+}
+
+.value-card h3 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  margin-bottom: var(--sp-md);
+}
+
+.value-card p {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.about-stats {
+  padding: var(--sp-4xl) 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-xl);
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--fs-3xl);
+  color: var(--rose);
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  margin-top: var(--sp-sm);
+}
+
+/* ─── Contact Page ─── */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3xl);
+  padding: var(--sp-2xl) 0 var(--sp-4xl);
+  align-items: start;
+}
+
+.contact-info-card {
+  background: var(--cream);
+  border-radius: var(--border-radius-lg);
+  padding: var(--sp-2xl);
+}
+
+.contact-info-item {
+  display: flex;
+  gap: var(--sp-lg);
+  margin-bottom: var(--sp-xl);
+}
+
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--rose);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-item h4 {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-info-item p {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+}
+
+.contact-map {
+  margin-top: var(--sp-xl);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.contact-form-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-lg);
+  padding: var(--sp-2xl);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-2xl);
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}

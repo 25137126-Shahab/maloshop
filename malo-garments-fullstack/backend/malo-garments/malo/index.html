@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malo Garments — Elegant Women's Fashion & Intimate Apparel</title>
+  <meta name="description" content="Discover premium ladies' garments and undergarments at Malo Garments. Shop elegant dresses, tops, lingerie, sleepwear and more with free shipping on orders over Rs. 5,000." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/home.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <header id="main-navbar"></header>
+
+  <!-- ═══ HERO SLIDER ═══ -->
+  <section class="hero">
+    <div class="hero-slider">
+      <!-- Slide 1 -->
+      <div class="hero-slide active">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&h=900&fit=crop" alt="Summer Collection" class="hero-slide-bg" />
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <span class="hero-tag">✦ New Season 2026</span>
+          <h1 class="hero-title">Elevate Your Everyday Elegance</h1>
+          <p class="hero-desc">Discover our curated collection of women's fashion — where comfort meets timeless sophistication.</p>
+          <div class="hero-buttons">
+            <a href="./pages/shop.html" class="hero-btn-primary">Shop Collection</a>
+            <a href="./pages/shop.html?category=cat-1" class="hero-btn-secondary">Ladies Garments</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&h=900&fit=crop" alt="Intimate Collection" class="hero-slide-bg" />
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <span class="hero-tag">✦ Intimate Luxury</span>
+          <h1 class="hero-title">Comfort Redefined, Beauty Unveiled</h1>
+          <p class="hero-desc">Premium undergarments and sleepwear crafted for the modern woman. Feel beautiful inside and out.</p>
+          <div class="hero-buttons">
+            <a href="./pages/shop.html?category=cat-2" class="hero-btn-primary">Shop Intimates</a>
+            <a href="./pages/about.html" class="hero-btn-secondary">Our Story</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&h=900&fit=crop" alt="Sale" class="hero-slide-bg" />
+        <div class="hero-slide-overlay"></div>
+        <div class="hero-slide-content">
+          <span class="hero-tag">✦ Limited Time</span>
+          <h1 class="hero-title">Up to 40% Off Selected Styles</h1>
+          <p class="hero-desc">Don't miss our seasonal sale. Premium quality at unbeatable prices — shop before it's gone.</p>
+          <div class="hero-buttons">
+            <a href="./pages/shop.html?sale=true" class="hero-btn-primary">Shop Sale</a>
+            <a href="./pages/shop.html" class="hero-btn-secondary">View All</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider Dots -->
+    <div class="hero-dots">
+      <button class="hero-dot active" aria-label="Slide 1"></button>
+      <button class="hero-dot" aria-label="Slide 2"></button>
+      <button class="hero-dot" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES BAR ═══ -->
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🚚</div>
+          <h4 class="feature-title">Free Shipping</h4>
+          <p class="feature-desc">On orders above Rs. 5,000</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">↩️</div>
+          <h4 class="feature-title">Easy Returns</h4>
+          <p class="feature-desc">30-day hassle-free returns</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔒</div>
+          <h4 class="feature-title">Secure Payment</h4>
+          <p class="feature-desc">100% secure checkout</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💬</div>
+          <h4 class="feature-title">24/7 Support</h4>
+          <p class="feature-desc">Dedicated customer care</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORY HIGHLIGHTS ═══ -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-subtitle">Browse By</span>
+        <h2 class="section-title">Shop Categories</h2>
+        <hr class="section-divider" />
+      </div>
+      <div class="categories-grid" id="categoryGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEW ARRIVALS ═══ -->
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-subtitle">Just Landed</span>
+        <h2 class="section-title">New Arrivals</h2>
+        <hr class="section-divider" />
+      </div>
+      <div class="product-grid" id="newArrivalsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="section-cta" style="margin-top: var(--sp-2xl);">
+        <a href="./pages/shop.html" class="btn btn-outline">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SALE BANNER ═══ -->
+  <section class="sale-banner">
+    <div class="container">
+      <div class="sale-banner-content">
+        <div class="sale-banner-text animate-on-scroll">
+          <span class="sale-tag">Sale</span>
+          <h2 class="sale-title">Seasonal Sale — Up to 40% Off</h2>
+          <p class="sale-desc">Refresh your wardrobe with our best-selling styles at incredible prices. Premium fabrics, timeless designs — now more accessible than ever.</p>
+          <a href="./pages/shop.html?sale=true" class="btn btn-primary btn-lg">Shop the Sale</a>
+        </div>
+        <div class="sale-banner-image animate-on-scroll delay-2">
+          <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=750&fit=crop" alt="Season Sale" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-subtitle">What They Say</span>
+        <h2 class="section-title">Customer Love</h2>
+        <hr class="section-divider" />
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card animate-on-scroll">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">The quality of the fabrics is exceptional. Every piece I've ordered from Malo Garments has exceeded my expectations. My go-to for elegant workwear!</p>
+          <div class="testimonial-author">Ayesha R.</div>
+          <div class="testimonial-role">Loyal Customer</div>
+        </div>
+        <div class="testimonial-card animate-on-scroll delay-1">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Finally found a brand that understands comfort AND style. Their undergarments are the softest I've ever worn, and the sizing is spot on.</p>
+          <div class="testimonial-author">Fatima K.</div>
+          <div class="testimonial-role">Verified Buyer</div>
+        </div>
+        <div class="testimonial-card animate-on-scroll delay-2">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Beautiful packaging, fast delivery, and the dress looked even better in person. Malo Garments is now my favorite online boutique. Highly recommend!</p>
+          <div class="testimonial-author">Sara M.</div>
+          <div class="testimonial-role">Repeat Customer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="./js/store.js"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/home.js"></script>
+
+</body>
+</html>

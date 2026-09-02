@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed — Malo Garments</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <header id="main-navbar"></header>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="confirmation-box" id="confirmationBox">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      MaloApp.initPage();
+      const params = new URLSearchParams(window.location.search);
+      const order = await MaloStore.getOrderById(params.get('id'));
+      const box = document.getElementById('confirmationBox');
+
+      if (!order) {
+        box.innerHTML = `
+          <div class="confirmation-icon">😕</div>
+          <h1>Order Not Found</h1>
+          <p style="color: var(--text-light); margin: var(--sp-md) 0 var(--sp-2xl);">We couldn't find this order. It may have already been processed.</p>
+          <a href="../index.html" class="btn btn-primary">Back to Home</a>
+        `;
+        return;
+      }
+
+      box.innerHTML = `
+        <div class="confirmation-icon">🎉</div>
+        <h1>Thank You, ${order.customer.name.split(' ')[0]}!</h1>
+        <p style="color: var(--text-light); margin-top: var(--sp-md);">Your order has been placed successfully. A confirmation email will be sent to ${order.customer.email}.</p>
+        <div class="confirmation-order-id">Order ID: ${order.id}</div>
+
+        <div class="confirmation-details">
+          <h3 style="margin-bottom: var(--sp-lg);">Order Summary</h3>
+          ${order.items.map(item => `
+            <div class="checkout-summary-item">
+              <img src="${item.image}" alt="${item.name}" />
+              <div class="checkout-summary-item-info">
+                <div class="name">${item.name}</div>
+                <div class="meta">Size: ${item.size} · Qty: ${item.quantity}</div>
+              </div>
+              <div>${MaloApp.formatPrice(item.price * item.quantity)}</div>
+            </div>
+          `).join('')}
+          <div class="summary-row" style="margin-top: var(--sp-lg); padding-top: var(--sp-lg); border-top: 1px solid var(--border-light);">
+            <span>Subtotal</span><span>${MaloApp.formatPrice(order.subtotal)}</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span><span>${order.shipping === 0 ? 'Free' : MaloApp.formatPrice(order.shipping)}</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span><span>${MaloApp.formatPrice(order.total)}</span>
+          </div>
+          <div style="margin-top: var(--sp-xl); padding-top: var(--sp-xl); border-top: 1px solid var(--border-light);">
+            <p style="font-size: var(--fs-sm); color: var(--text-light);"><strong>Shipping to:</strong> ${order.customer.address}, ${order.customer.city}${order.customer.state ? ', ' + order.customer.state : ''}</p>
+            <p style="font-size: var(--fs-sm); color: var(--text-light); margin-top: var(--sp-sm);"><strong>Payment:</strong> ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Card Payment (Demo)'}</p>
+          </div>
+        </div>
+
+        <div class="confirmation-actions">
+          <a href="../pages/shop.html" class="btn btn-outline">Continue Shopping</a>
+          <a href="../pages/account.html" class="btn btn-primary">View My Orders</a>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

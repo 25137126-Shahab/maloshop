@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products — Malo Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" id="adminSidebar"></aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar" id="adminTopbar"></div>
+
+      <div class="admin-content">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div class="admin-toolbar">
+              <input type="text" class="admin-search-input" id="productSearch" placeholder="Search products..." />
+              <select class="form-select" id="categoryFilterSelect" style="width:auto;">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="addProductBtn">+ Add Product</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th></th><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="productsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Product Modal -->
+  <div class="admin-modal-overlay" id="productModalOverlay">
+    <div class="admin-modal">
+      <div class="admin-modal-header">
+        <h3 id="productModalTitle">Add Product</h3>
+        <button class="admin-modal-close" id="closeProductModal">✕</button>
+      </div>
+      <form id="productForm">
+        <input type="hidden" id="productId" />
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Product Name *</label>
+            <input type="text" class="form-input" id="prodName" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Stock Quantity *</label>
+            <input type="number" class="form-input" id="prodStock" min="0" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Price (Rs.) *</label>
+            <input type="number" class="form-input" id="prodPrice" min="0" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Original Price (Rs.)</label>
+            <input type="number" class="form-input" id="prodOriginalPrice" min="0" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" id="prodCategory" required></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subcategory</label>
+            <select class="form-select" id="prodSubcategory"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description *</label>
+          <textarea class="form-textarea" id="prodDescription" required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Sizes (comma-separated) *</label>
+          <input type="text" class="form-input" id="prodSizes" placeholder="S, M, L, XL" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Colors</label>
+          <div id="colorRows"></div>
+          <button type="button" class="add-row-btn" id="addColorRow">+ Add Color</button>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image URLs *</label>
+          <div id="imageRows"></div>
+          <button type="button" class="add-row-btn" id="addImageRow">+ Add Image URL</button>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" id="prodFeatured" style="width:auto; margin-right:6px;" /> Featured (New Arrival)
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="form-label">
+              <input type="checkbox" id="prodOnSale" style="width:auto; margin-right:6px;" /> On Sale
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Save Product</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/store.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="./js/admin-common.js"></script>
+  <script src="./js/products.js"></script>
+</body>
+</html>
